@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditional Sentences Tutor | เว็บติวประโยคเงื่อนไข ระดับ ม.ปลาย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#6366f1;
+  --primary-dark:#4f46e5;
+  --accent:#f59e0b;
+  --pink:#ec4899;
+  --green:#10b981;
+  --red:#ef4444;
+  --blue:#0ea5e9;
+  --bg:#f5f7ff;
+  --card:#ffffff;
+  --text:#1e293b;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --shadow:0 8px 24px rgba(99,102,241,.12);
+  --shadow-lg:0 16px 40px rgba(99,102,241,.18);
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Sarabun','Poppins',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.en-head{font-family:'Poppins','Sarabun',sans-serif;font-weight:700}
+
+/* ===== NAVBAR ===== */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#ec4899 100%);
+  box-shadow:0 4px 20px rgba(99,102,241,.25);
+  padding:0 18px;
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;flex-wrap:wrap;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;
+  color:#fff;font-weight:800;font-size:1.15rem;letter-spacing:.3px;
+}
+.brand .logo{
+  width:38px;height:38px;border-radius:11px;
+  background:rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;font-weight:800;
+  backdrop-filter:blur(4px);
+}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.nav-links a{
+  color:rgba(255,255,255,.92);
+  text-decoration:none;font-weight:500;font-size:.95rem;
+  padding:8px 14px;border-radius:10px;
+  transition:all .2s;white-space:nowrap;
+}
+.nav-links a:hover,.nav-links a.active{
+  background:rgba(255,255,255,.25);color:#fff;
+}
+
+/* ===== LAYOUT ===== */
+main{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+section{display:none;animation:fade .4s ease}
+section.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#ec4899 100%);
+  border-radius:26px;color:#fff;padding:48px 36px;
+  box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;right:-60px;top:-60px;
+  width:260px;height:260px;border-radius:50%;
+  background:rgba(255,255,255,.12);
+}
+.hero::before{
+  content:'';position:absolute;right:60px;bottom:-80px;
+  width:180px;height:180px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+.hero h1{font-size:2.4rem;margin-bottom:10px;position:relative}
+.hero p{font-size:1.15rem;opacity:.96;max-width:640px;position:relative;margin-bottom:22px}
+.hero .cta-row{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:12px;font-weight:600;font-size:1rem;
+  text-decoration:none;cursor:pointer;border:none;transition:all .2s;
+  font-family:'Sarabun',sans-serif;
+}
+.btn-white{background:#fff;color:var(--primary-dark)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.btn-ghost{background:rgba(255,255,255,.18);color:#fff;border:2px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.3)}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+/* Quick stats */
+.quick-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px;margin-top:24px;
+}
+.stat-card{
+  background:var(--card);border-radius:16px;padding:20px;
+  box-shadow:var(--shadow);text-align:center;border-top:4px solid var(--primary);
+}
+.stat-card .num{font-size:2rem;font-weight:800;color:var(--primary);font-family:'Poppins'}
+.stat-card .lbl{color:var(--muted);font-size:.92rem;margin-top:4px}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--card);border-radius:var(--radius);
+  padding:26px;box-shadow:var(--shadow);margin-bottom:22px;
+}
+.card h2{font-size:1.5rem;color:var(--primary-dark);margin-bottom:6px}
+.card h3{font-size:1.2rem;margin:18px 0 8px;color:var(--text)}
+.card .lead{color:var(--muted);margin-bottom:16px}
+.section-title{
+  font-size:1.8rem;color:var(--primary-dark);margin:8px 0 6px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title .emoji{font-size:1.6rem}
+.section-sub{color:var(--muted);margin-bottom:24px}
+
+/* ===== LESSON GRID ===== */
+.lesson-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;margin:20px 0;
+}
+.lesson-tile{
+  background:var(--card);border-radius:14px;padding:18px;
+  box-shadow:var(--shadow);cursor:pointer;transition:all .2s;
+  border-left:5px solid var(--primary);position:relative;
+}
+.lesson-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.lesson-tile .tag{
+  display:inline-block;font-size:.72rem;font-weight:600;
+  padding:3px 10px;border-radius:20px;background:#eef2ff;color:var(--primary);
+  margin-bottom:8px;
+}
+.lesson-tile h4{font-size:1.08rem;margin-bottom:4px}
+.lesson-tile .struct{font-family:'Poppins';font-size:.85rem;color:var(--muted)}
+.lesson-tile.zero{border-left-color:var(--green)}
+.lesson-tile.zero .tag{background:#dcfce7;color:#15803d}
+.lesson-tile.first{border-left-color:var(--blue)}
+.lesson-tile.first .tag{background:#e0f2fe;color:#0369a1}
+.lesson-tile.second{border-left-color:var(--accent)}
+.lesson-tile.second .tag{background:#fef3c7;color:#b45309}
+.lesson-tile.third{border-left-color:var(--pink)}
+.lesson-tile.third .tag{background:#fce7f3;color:#be185d}
+.lesson-tile.mixed{border-left-color:var(--primary)}
+.lesson-tile.alt{border-left-color:var(--red)}
+
+/* ===== TYPE BADGE ===== */
+.type-badge{
+  display:inline-block;padding:4px 14px;border-radius:20px;
+  font-weight:700;font-size:.85rem;color:#fff;margin-bottom:10px;
+}
+.type-zero{background:var(--green)}
+.type-first{background:var(--blue)}
+.type-second{background:var(--accent)}
+.type-third{background:var(--pink)}
+.type-mixed{background:var(--primary)}
+.type-alt{background:var(--red)}
+
+/* ===== STRUCTURE BOX ===== */
+.struct-box{
+  background:linear-gradient(135deg,#eef2ff,#faf5ff);
+  border:2px dashed var(--primary);
+  border-radius:14px;padding:18px 22px;margin:14px 0;
+  font-family:'Poppins';font-size:1.15rem;font-weight:600;
+  text-align:center;
+}
+.struct-box .if-part{color:var(--blue)}
+.struct-box .main-part{color:var(--pink)}
+.struct-box .arrow{color:var(--muted);margin:0 8px}
+
+/* ===== EXAMPLE BOX ===== */
+.example-list{margin:14px 0}
+.example{
+  background:#f8fafc;border-radius:12px;padding:12px 16px;
+  margin-bottom:10px;border-left:4px solid var(--primary);
+}
+.example .en{font-family:'Poppins';font-weight:500;font-size:1.05rem;color:var(--text)}
+.example .en .if-clause{background:#dbeafe;padding:1px 5px;border-radius:4px}
+.example .en .main-clause{background:#fce7f3;padding:1px 5px;border-radius:4px}
+.example .th{color:var(--muted);font-size:.95rem;margin-top:4px}
+.example .th::before{content:'🇹🇭 '}
+
+/* ===== TIP BOX ===== */
+.tip{
+  background:#fef9c3;border-left:5px solid var(--accent);
+  border-radius:12px;padding:14px 18px;margin:14px 0;
+}
+.tip strong{color:#b45309}
+.note{
+  background:#ecfdf5;border-left:5px solid var(--green);
+  border-radius:12px;padding:14px 18px;margin:14px 0;
+}
+.warn{
+  background:#fef2f2;border-left:5px solid var(--red);
+  border-radius:12px;padding:14px 18px;margin:14px 0;
+}
+.warn strong{color:#b91c1c}
+
+/* ===== EXERCISES ===== */
+.q-block{
+  background:var(--card);border-radius:14px;padding:22px;
+  box-shadow:var(--shadow);margin-bottom:16px;
+}
+.q-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--primary);color:#fff;font-weight:700;font-family:'Poppins';
+  margin-right:10px;
+}
+.q-text{font-size:1.1rem;margin-bottom:14px}
+.q-text .blank{
+  display:inline-block;min-width:90px;border-bottom:3px solid var(--primary);
+  margin:0 4px;text-align:center;color:var(--primary);font-weight:600;
+}
+.opts{display:grid;gap:8px}
+.opt{
+  background:#f8fafc;border:2px solid var(--border);border-radius:10px;
+  padding:11px 16px;cursor:pointer;transition:all .15s;font-size:1rem;
+  font-family:'Sarabun';
+}
+.opt:hover{border-color:var(--primary);background:#eef2ff}
+.opt.correct{background:#dcfce7;border-color:var(--green);color:#15803d;font-weight:600}
+.opt.wrong{background:#fee2e2;border-color:var(--red);color:#b91c1c}
+.opt.disabled{pointer-events:none;opacity:.85}
+.opt.selected{background:#eef2ff;border-color:var(--primary);color:var(--primary-dark);font-weight:600;box-shadow:0 0 0 3px rgba(99,102,241,.22) inset}
+.feedback{
+  margin-top:12px;padding:12px 14px;border-radius:10px;font-size:.95rem;
+  display:none;
+}
+.feedback.show{display:block;animation:fade .25s}
+.feedback.correct{background:#dcfce7;color:#15803d}
+.feedback.wrong{background:#fee2e2;color:#b91c1c}
+.feedback .exp{margin-top:6px;color:var(--muted)}
+
+input.fill-input{
+  border:2px solid var(--border);border-radius:8px;padding:8px 12px;
+  font-size:1rem;font-family:'Poppins';min-width:140px;margin:0 4px;
+}
+input.fill-input:focus{outline:none;border-color:var(--primary)}
+
+/* reorder */
+.reorder-area{
+  display:flex;flex-wrap:wrap;gap:8px;padding:14px;
+  background:#f8fafc;border-radius:10px;margin:8px 0;min-height:54px;
+  border:2px dashed var(--border);
+}
+.word-chip{
+  background:var(--primary);color:#fff;padding:8px 14px;border-radius:8px;
+  cursor:pointer;font-family:'Poppins';font-weight:500;user-select:none;
+  transition:all .15s;
+}
+.word-chip:hover{transform:translateY(-2px)}
+.word-chip.pool{background:#cbd5e1;color:#1e293b}
+.answer-bar{
+  background:#eef2ff;border-radius:10px;padding:14px;min-height:54px;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;border:2px solid var(--primary);
+}
+
+/* ===== TABS ===== */
+.tabs{
+  display:flex;gap:6px;background:#e2e8f0;border-radius:12px;padding:5px;
+  margin-bottom:20px;flex-wrap:wrap;
+}
+.tab{
+  padding:9px 18px;border-radius:9px;cursor:pointer;font-weight:600;
+  color:var(--muted);transition:all .2s;font-size:.95rem;
+}
+.tab.active{background:#fff;color:var(--primary-dark);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.tab:hover:not(.active){color:var(--text)}
+.tab-pane{display:none}
+.tab-pane.active{display:block;animation:fade .3s}
+
+/* ===== TEST ===== */
+.test-meta{
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+  background:linear-gradient(135deg,#eef2ff,#fce7f3);
+  border-radius:14px;padding:16px 20px;margin-bottom:20px;
+}
+.timer{
+  font-family:'Poppins';font-weight:700;font-size:1.3rem;color:var(--primary-dark);
+  background:#fff;padding:6px 16px;border-radius:10px;box-shadow:var(--shadow);
+}
+.score-pill{
+  font-weight:600;color:var(--text);background:#fff;padding:6px 16px;border-radius:10px;
+}
+.result-box{
+  background:linear-gradient(135deg,#10b981,#059669);color:#fff;
+  border-radius:18px;padding:30px;text-align:center;margin:20px 0;
+  box-shadow:var(--shadow-lg);
+}
+.result-box .big{font-size:3rem;font-weight:800;font-family:'Poppins'}
+.result-box .lbl{font-size:1.1rem;opacity:.95}
+
+/* ===== SUMMARY TABLE ===== */
+.table-wrap{overflow-x:auto;border-radius:14px;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;background:#fff;min-width:600px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--primary);color:#fff;font-weight:600;font-size:.9rem}
+tr:hover td{background:#f8fafc}
+td .en{font-family:'Poppins';font-weight:500}
+td .th{color:var(--muted);font-size:.9rem}
+
+/* ===== SEARCH ===== */
+.search-box{
+  position:relative;margin-bottom:18px;
+}
+.search-box input{
+  width:100%;padding:14px 18px 14px 46px;border:2px solid var(--border);
+  border-radius:12px;font-size:1.05rem;font-family:'Sarabun';
+}
+.search-box input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(99,102,241,.15)}
+.search-box .icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.2rem}
+.search-results{margin-top:10px}
+.search-hit{
+  background:#fff;border-radius:10px;padding:12px 16px;margin-bottom:8px;
+  box-shadow:var(--shadow);border-left:4px solid var(--accent);cursor:pointer;
+}
+.search-hit:hover{background:#fffbeb}
+.search-hit .src{font-size:.78rem;color:var(--muted);font-weight:600;text-transform:uppercase}
+.search-hit mark{background:#fef08a;padding:0 3px;border-radius:3px}
+.no-result{color:var(--muted);text-align:center;padding:30px;font-style:italic}
+
+/* ===== PROGRESS ===== */
+.progress-list{display:grid;gap:12px}
+.progress-item{
+  background:#fff;border-radius:12px;padding:14px 18px;box-shadow:var(--shadow);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+  border-left:4px solid var(--green);
+}
+.progress-item .info{font-weight:600}
+.progress-item .score{font-family:'Poppins';font-weight:700;color:var(--primary-dark);font-size:1.2rem}
+.bar-bg{background:#e2e8f0;border-radius:8px;height:8px;width:100%;margin-top:6px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:8px;transition:width .6s}
+.empty-state{text-align:center;padding:40px;color:var(--muted)}
+.empty-state .ico{font-size:3rem;margin-bottom:10px}
+
+/* ===== UTILITY ===== */
+.pill{
+  display:inline-block;padding:3px 10px;border-radius:20px;
+  font-size:.8rem;font-weight:600;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:6px;color:var(--primary);
+  text-decoration:none;font-weight:600;margin-bottom:14px;cursor:pointer;
+}
+.back-link:hover{text-decoration:underline}
+.kbd{
+  font-family:'Poppins';background:#1e293b;color:#fff;padding:2px 8px;
+  border-radius:6px;font-size:.85rem;
+}
+ul.bullets{margin:10px 0 10px 22px}
+ul.bullets li{margin-bottom:6px}
+
+footer{
+  text-align:center;padding:30px 18px;color:var(--muted);font-size:.9rem;
+}
+
+/* responsive */
+@media(max-width:720px){
+  .hero h1{font-size:1.8rem}
+  .hero{padding:32px 22px}
+  .nav-inner{height:auto;padding:10px 0}
+  .nav-links{width:100%;justify-content:flex-start;overflow-x:auto;padding-bottom:6px}
+  .nav-links a{padding:6px 10px;font-size:.88rem}
+  .section-title{font-size:1.4rem}
+  main{padding:18px 12px 50px}
+  .card{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="logo">If</span>
+      <span>Conditional Tutor</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a data-sec="home" class="active">หน้าแรก</a>
+      <a data-sec="lessons">บทเรียน</a>
+      <a data-sec="exercises">แบบฝึกหัด</a>
+      <a data-sec="tests">แบบทดสอบ</a>
+      <a data-sec="summary">สรุป/Cheat Sheet</a>
+      <a data-sec="progress">ผลคะแนน</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- ============ HOME ============ -->
+<section id="home" class="active">
+  <div class="hero">
+    <h1>เรียนรู้ Conditional Sentences<br>ประโยคเงื่อนไข ครบจบ!</h1>
+    <p>เว็บไซต์ติวและสอนประโยคเงื่อนไขสำหรับนักเรียนระดับมัธยมศึกษาตอนปลาย ครอบคลุม Zero, First, Second, Third และ Mixed Conditional พร้อมแบบฝึกหัด แบบทดสอบ และการติดตามผล อธิบายเป็นไทย-อังกฤษ เข้าใจง่าย ใช้ได้จริง</p>
+    <div class="cta-row">
+      <button class="btn btn-white" onclick="go('lessons')">📖 เริ่มเรียนบทแรก</button>
+      <button class="btn btn-ghost" onclick="go('tests');setTimeout(()=>startTest('pre'),300)">✏️ ทำ Pre-test วัดระดับ</button>
+    </div>
+  </div>
+
+  <div class="quick-stats">
+    <div class="stat-card"><div class="num">6</div><div class="lbl">บทเรียนครบทุกประเภท</div></div>
+    <div class="stat-card"><div class="num">30+</div><div class="lbl">แบบฝึกหัดโต้ตอบ</div></div>
+    <div class="stat-card"><div class="num">2</div><div class="lbl">แบบทดสอบ (Pre/Post)</div></div>
+    <div class="stat-card"><div class="num">100%</div><div class="lbl">เฉลยพร้อมคำอธิบาย</div></div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <h2>🎯 ภาพรวม Conditional Sentences คืออะไร?</h2>
+    <p class="lead">ประโยคเงื่อนไข (Conditional Sentences) คือประโยคที่กล่าวถึงผลลัพธ์ที่จะเกิดขึ้น <em>ถ้า</em> เงื่อนไขหนึ่งเป็นจริง ประกอบด้วย 2 ส่วนหลัก:</p>
+    <div class="struct-box">
+      <span class="if-part">If-clause (อนุประโยคเงื่อนไข)</span>
+      <span class="arrow">+</span>
+      <span class="main-part">Main clause (ประโยคหลัก/ผลลัพธ์)</span>
+    </div>
+    <p>ตัวอย่าง: <strong>If it rains</strong> <span style="color:var(--muted)>(เงื่อนไข)</span>, <strong>I will stay home</strong> <span style="color:var(--muted)>(ผลลัพธ์)</span></p>
+    <p>ประโยคเงื่อนไขแบ่งเป็น 4 ประเภทหลัก ตามความเป็นไปได้ของเหตุการณ์ ว่าเป็นจริงเสมอ เป็นไปได้ หรือไม่เป็นจริง (ในปัจจุบัน/อดีต) ดูภาพรวมในตารางสรุปที่หน้า <a onclick="go('summary')" style="color:var(--primary);cursor:pointer;font-weight:600">Cheat Sheet</a></p>
+
+    <h3>📚 เนื้อหาทั้งหมดในเว็บนี้</h3>
+    <ul class="bullets">
+      <li><strong>บทเรียน 6 บท:</strong> Overview, Zero, First, Second, Third, Mixed Conditionals + คำเชื่อมทางเลือก (unless, as long as, provided that)</li>
+      <li><strong>แบบฝึกหัด 3 รูปแบบ:</strong> เลือกตอบ (Multiple Choice), กรอกคำ (Fill-in-the-blank), เรียงประโยค (Reorder)</li>
+      <li><strong>แบบทดสอบ 2 ชุด:</strong> Pre-test (วัดก่อนเรียน) และ Post-test (วัดหลังเรียน) พร้อมจับเวลา</li>
+      <li><strong>สรุป/Cheat Sheet:</strong> ตารางเปรียบเทียบโครงสร้างและการใช้งานทั้งหมด + จุดที่มักสอบ</li>
+      <li><strong>ติดตามผล:</strong> บันทึกคะแนนแบบฝึกหัดและแบบทดสอบอัตโนมัติ (บนเครื่องของคุณ)</li>
+      <li><strong>ค้นหา:</strong> ค้นหาเนื้อหา/ตัวอย่างได้ทันทีจากช่องค้นหา</li>
+    </ul>
+
+    <h3>👨‍🏫 เหมาะสำหรับ</h3>
+    <p>นักเรียน ม.ปลาย ที่กำลังเตรียมสอบ O-NET / GAT / แอดมิชชัน และครูผู้สอนที่ต้องการสื่อการสอนพร้อมแบบฝึกหัดและเฉลย ใช้ได้ทั้งเรียนด้วยตัวเองและสอนในห้องเรียน</p>
+  </div>
+</section>
+
+<!-- ============ LESSONS ============ -->
+<section id="lessons">
+  <h1 class="section-title"><span class="emoji">📚</span>บทเรียน Conditional Sentences</h1>
+  <p class="section-sub">คลิกที่บทเรียนที่ต้องการเรียน หรือเรียนตามลำดับจากบนลงล่าง เริ่มจาก Zero → First → Second → Third → Mixed</p>
+
+  <div id="lessonIndex" class="lesson-grid"></div>
+  <div id="lessonContent"></div>
+</section>
+
+<!-- ============ EXERCISES ============ -->
+<section id="exercises">
+  <h1 class="section-title"><span class="emoji">✍️</span>แบบฝึกหัดโต้ตอบ</h1>
+  <p class="section-sub">ฝึกทำแบบฝึกหัด 3 รูปแบบ ทำเสร็จเห็นเฉลยและคำอธิบายทันที คะแนนบันทึกอัตโนมัติ</p>
+
+  <div class="tabs" id="exTabs">
+    <div class="tab active" data-tab="mc">① เลือกตอบ (Multiple Choice)</div>
+    <div class="tab" data-tab="fill">② กรอกคำ (Fill-in-the-blank)</div>
+    <div class="tab" data-tab="reorder">③ เรียงประโยค (Reorder)</div>
+  </div>
+
+  <div class="tab-pane active" id="pane-mc"></div>
+  <div class="tab-pane" id="pane-fill"></div>
+  <div class="tab-pane" id="pane-reorder"></div>
+</section>
+
+<!-- ============ TESTS ============ -->
+<section id="tests">
+  <h1 class="section-title"><span class="emoji">📝</span>แบบทดสอบ</h1>
+  <p class="section-sub">ทำ Pre-test ก่อนเรียนเพื่อวัดระดับ และ Post-test หลังเรียนจบเพื่อวัดผลการเรียนรู้ มีจับเวลา 10 ข้อ/ชุด</p>
+
+  <div class="tabs" id="testTabs">
+    <div class="tab active" data-tab="pre">Pre-test (ก่อนเรียน)</div>
+    <div class="tab" data-tab="post">Post-test (หลังเรียน)</div>
+  </div>
+
+  <div class="tab-pane active" id="test-pane-pre">
+    <div class="card" id="preIntro">
+      <h2>📋 Pre-test: วัดระดับก่อนเรียน</h2>
+      <p class="lead">แบบทดสอบ 10 ข้อ ครอบคลุมทุกประเภท Conditional Sentences มีจับเวลา 15 นาที ทำเสร็จเห็นคะแนนและเฉลยพร้อมคำอธิบาย</p>
+      <ul class="bullets">
+        <li>ข้อสอบ 10 ข้อ แบบเลือกตอบ</li>
+        <li>เวลา 15 นาที (แนะนำให้ทำภายในเวลา)</li>
+        <li>เฉลยละเอียดทุกข้อหลังทำเสร็จ</li>
+        <li>คะแนนบันทึกในหน้า "ผลคะแนน" อัตโนมัติ</li>
+      </ul>
+      <button class="btn btn-primary" onclick="startTest('pre')">🚀 เริ่มทำ Pre-test</button>
+    </div>
+    <div id="preBody"></div>
+  </div>
+
+  <div class="tab-pane" id="test-pane-post">
+    <div class="card" id="postIntro">
+      <h2>📋 Post-test: วัดผลหลังเรียน</h2>
+      <p class="lead">แบบทดสอบ 10 ข้อ ความยากใกล้เคียงสอบจริง ครอบคลุม Mixed Conditional และ unless/as long as/provided that ด้วย จับเวลา 15 นาที</p>
+      <ul class="bullets">
+        <li>ข้อสอบ 10 ข้อ แบบเลือกตอบ ระดับยากขึ้น</li>
+        <li>ครอบคลุม Mixed Conditional และคำเชื่อมทางเลือก</li>
+        <li>เวลา 15 นาที</li>
+        <li>เปรียบเทียบกับคะแนน Pre-test ได้ในหน้า "ผลคะแนน"</li>
+      </ul>
+      <button class="btn btn-primary" onclick="startTest('post')">🚀 เริ่มทำ Post-test</button>
+    </div>
+    <div id="postBody"></div>
+  </div>
+</section>
+
+<!-- ============ SUMMARY ============ -->
+<section id="summary">
+  <h1 class="section-title"><span class="emoji">⚡</span>สรุป & Cheat Sheet</h1>
+  <p class="section-sub">ตารางสรุปโครงสร้างและการใช้งานทั้งหมด + จุดที่มักออกสอบ + เทคนิคจำง่าย</p>
+
+  <div class="search-box">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="พิมพ์คำค้นหา เช่น zero, would have, unless, regret, past perfect..." oninput="doSearch()">
+  </div>
+  <div class="search-results" id="searchResults"></div>
+
+  <div class="card" id="summaryCard">
+    <h2>📊 ตารางสรุปโครงสร้างทั้งหมด</h2>
+    <p class="lead">เปรียบเทียบโครงสร้าง การใช้งาน และตัวอย่างของแต่ละประเภท</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ประเภท</th><th>โครงสร้าง</th><th>การใช้งาน</th><th>ตัวอย่าง</th></tr>
+        </thead>
+        <tbody id="summaryTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔑 จุดที่มักออกสอบ (Exam Tips)</h2>
+    <div class="tip"><strong>1. รูปกริยาใน If-clause และ Main clause ต้องจับคู่กันให้ถูกประเภท</strong> สอบมักให้เติมกริยา — ดูความเป็นไปได้ของเหตุการณ์ก่อน แล้วเลือก Tense ให้ตรงประเภท</div>
+    <div class="warn"><strong>2. Second Conditional:</strong> ใช้ <span class="kbd">were</span> แทน <span class="kbd">was</span> กับทุกประธาน (If I were you, If he were rich) — ข้อนี้ออกบ่อยมาก</div>
+    <div class="warn"><strong>3. First Conditional:</strong> ใน If-clause ใช้ Present Simple <u>ไม่ใช้ will</u> — "If it rains, I will stay" ไม่ใช่ "If it will rain..."</div>
+    <div class="warn"><strong>4. Third Conditional:</strong> ใช้ Past Perfect (had + V3) ใน If-clause และ <span class="kbd">would have + V3</span> ใน Main clause — ห้ามสลับ</div>
+    <div class="tip"><strong>5. unless = if not:</strong> "Unless you hurry = If you don't hurry" — อย่าใช้ not ซ้ำในประโยคเดียวกัน</div>
+    <div class="tip"><strong>6. Mixed Conditional:</strong> เงื่อนไขในอดีต ผลในปัจจุบัน = If + Past Perfect, would + V1 (If I had saved money, I would be rich now)</div>
+    <div class="note"><strong>7. ลำดับ If-clause กับ Main clause สลับกันได้:</strong> "If it rains, I'll stay" = "I'll stay if it rains" — ถ้า If-clause อยู่หลัง ไม่ใช้จุดคอมมา</div>
+  </div>
+
+  <div class="card">
+    <h2>🧠 เทคนิคจำง่าย</h2>
+    <h3>จำตาม "ความเป็นจริง"</h3>
+    <ul class="bullets">
+      <li><span class="pill" style="background:#dcfce7;color:#15803d">Zero</span> จริงเสมอ (fact) → ทั้งคู่ Present Simple</li>
+      <li><span class="pill" style="background:#e0f2fe;color:#0369a1">First</span> เป็นไปได้จริงในอนาคต → If + Present, will + V1</li>
+      <li><span class="pill" style="background:#fef3c7;color:#b45309">Second</span> ไม่จริง/จินตนาการ (ปัจจุบัน-อนาคต) → If + Past, would + V1</li>
+      <li><span class="pill" style="background:#fce7f3;color:#be185d">Third</span> ไม่จริงในอดีต (เสียใจ) → If + Past Perfect, would have + V3</li>
+    </ul>
+    <h3>จำ "ยิ่งเลื่อนประเภทขึ้น ยิ่งไม่จริง"</h3>
+    <p>Zero = จริงเสมอ → First = น่าจะเป็นจริง → Second = ไม่จริงตอนนี้ → Third = ไม่จริงตั้งแต่อดีต ลำดับความจริงลดลงเรื่อย ๆ</p>
+    <h3>จำคำเชื่อมทางเลือก</h3>
+    <ul class="bullets">
+      <li><span class="kbd">unless</span> = if ... not (ถ้าไม่)</li>
+      <li><span class="kbd">as long as</span> = ตราบใดที่ (เน้นเงื่อนไข)</li>
+      <li><span class="kbd">provided (that)</span> = โดยมีเงื่อนไขว่า (ทางการ)</li>
+      <li><span class="kbd">in case</span> = ในกรณีที่ (เตรียมไว้)</li>
+      <li><span class="kbd">even if</span> = แม้แต่ถ้า</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROGRESS ============ -->
+<section id="progress">
+  <h1 class="section-title"><span class="emoji">📈</span>ผลคะแนน & ความก้าวหน้า</h1>
+  <p class="section-sub">บันทึกคะแนนแบบฝึกหัดและแบบทดสอบทั้งหมด บันทึกไว้ในเบราว์เซอร์ของคุณ (localStorage)</p>
+
+  <div class="card">
+    <h2>📊 คะแนนทั้งหมด</h2>
+    <div id="progressList"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="renderProgress()">🔄 รีเฟรช</button>
+      <button class="btn" style="background:#fee2e2;color:#b91c1c" onclick="clearProgress()">🗑️ ล้างประวัติทั้งหมด</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 สรุปผลการเรียน</h2>
+    <div id="progressSummary"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Conditional Sentences Tutor • สื่อการเรียนการสอนประโยคเงื่อนไข ระดับ ม.ปลาย<br>
+  บันทึกคะแนนบนเครื่องของคุณ (localStorage) • ไม่มีการส่งข้อมูลออกไปภายนอก
+</footer>
+
+<script>
+/* ============================================================
+   DATA: LESSONS
+   ============================================================ */
+const LESSONS = [
+  {
+    id:'overview', type:'mixed', tag:'Overview', title:'ภาพรวม Conditional Sentences',
+    struct:'If + clause , Main clause',
+    body:`
+<p class="lead">Conditional Sentence (ประโยคเงื่อนไข) คือประโยคที่บอกว่า <strong>ถ้า</strong> เงื่อนไขหนึ่งเกิดขึ้น จะมีผลอะไรตามมา ประกอบด้วย 2 ส่วน:</p>
+<div class="struct-box"><span class="if-part">If-clause (อนุประโยคเงื่อนไข)</span><span class="arrow">+</span><span class="main-part">Main clause (ประโยคหลัก = ผลลัพธ์)</span></div>
+<h3>รูปแบบทั่วไป</h3>
+<div class="example"><div class="en"><span class="if-clause">If it rains tomorrow</span>, <span class="main-clause">I will stay home</span>.</div><div class="th">ถ้าพรุ่งนี้ฝนตก ฉันจะอยู่บ้าน</div></div>
+<div class="example"><div class="en"><span class="main-clause">I will stay home</span> <span class="if-clause">if it rains tomorrow</span>.</div><div class="th">ฉันจะอยู่บ้าน ถ้าพรุ่งนี้ฝนตก</div></div>
+<div class="note"><strong>กฎจุดคอมมา:</strong> ถ้า If-clause อยู่<u>หน้า</u> Main clause ใช้จุดคอมมาคั่น (,) ถ้า If-clause อยู่<u>หลัง</u> Main clause <u>ไม่ใช้</u>จุดคอมมา</div>
+<h3>ทำไมต้องแบ่ง 4 ประเภท?</h3>
+<p>เพราะ "ความเป็นไปได้" ของเหตุการณ์ต่างกัน ส่งผลต่อรูปกริยา (Tense) ที่ใช้ ดูภาพรวมในตารางนี้:</p>
+<ul class="bullets">
+<li><strong>Zero:</strong> จริงเสมอ (fact) — ทั้งคู่ Present Simple</li>
+<li><strong>First:</strong> น่าจะเกิดขึ้นจริงในอนาคต — If + Present Simple, will + V1</li>
+<li><strong>Second:</strong> ไม่จริง/จินตนาการในปัจจุบันหรืออนาคต — If + Past Simple, would + V1</li>
+<li><strong>Third:</strong> ไม่จริงในอดีต (เสียใจ) — If + Past Perfect, would have + V3</li>
+</ul>
+<div class="tip"><strong>Tip เริ่มต้น:</strong> ก่อนตอบคำถาม Conditional ให้ถามตัวเองก่อนเสมอว่า "เหตุการณ์นี้เป็นจริงได้ไหม? เมื่อไหร่?" แล้วค่อยเลือกประเภท</div>
+`
+  },
+  {
+    id:'zero', type:'zero', tag:'Type 0', title:'Zero Conditional',
+    struct:'If + Present Simple , Present Simple',
+    body:`
+<p class="lead"><strong>Zero Conditional</strong> ใช้กับเหตุการณ์ที่<strong>เป็นจริงเสมอ</strong> เช่น ความจริงทางวิทยาศาสตร์ กฎเกณฑ์ทั่วไป หรือนิสัยที่ทำซ้ำ ๆ เงื่อนไขและผลลัพธ์เชื่อมโยงกันตลอดเวลา 100%</p>
+<div class="struct-box"><span class="if-part">If + Present Simple</span><span class="arrow">,</span><span class="main-part">Present Simple</span></div>
+<h3>ตัวอย่าง</h3>
+<div class="example-list">
+<div class="example"><div class="en"><span class="if-clause">If you heat ice</span>, <span class="main-clause">it melts</span>.</div><div class="th">ถ้าคุณเติมความร้อนให้น้ำแข็ง มันจะละลาย</div></div>
+<div class="example"><div class="en"><span class="if-clause">If babies are hungry</span>, <span class="main-clause">they cry</span>.</div><div class="th">ถ้าทารกหิว พวกเขาจะร้องไห้</div></div>
+<div class="example"><div class="en"><span class="if-clause">If people eat too much</span>, <span class="main-clause">they get fat</span>.</div><div class="th">ถ้าคนกินมากเกินไป พวกเขาจะอ้วน</div></div>
+<div class="example"><div class="en"><span class="if-clause">If you mix red and blue</span>, <span class="main-clause">you get purple</span>.</div><div class="th">ถ้าผสมแดงกับน้ำเงิน จะได้สีม่วง</div></div>
+<div class="example"><div class="en"><span class="if-clause">If my dog sees a cat</span>, <span class="main-clause">he chases it</span>.</div><div class="th">ถ้าหมาของฉันเห็นแมว มันจะไล่ตาม</div></div>
+</div>
+<div class="note"><strong>"If" ใช้แทน "When" ได้:</strong> ใน Zero Conditional, <span class="kbd">if</span> และ <span class="kbd">when</span> ใช้แทนกันได้ เพราะผลลัพธ์เกิดทุกครั้ง — "When you heat ice, it melts" มีความหมายเหมือนกัน</div>
+<div class="tip"><strong>จุดสังเกต:</strong> ทั้งสอง clause เป็น Present Simple เหมือนกัน — ไม่มี will/would ใด ๆ ทั้งสิ้น</div>
+<h3>วิธีจำ</h3>
+<p>คิดถึง "กฎ" หรือ "ความจริง" — เช่น สูตรคณิตศาสตร์ กฎทางวิทยาศาสตร์ หรือนิสัยประจำตัว ถ้าใช่ → ใช้ Zero</p>
+`
+  },
+  {
+    id:'first', type:'first', tag:'Type 1', title:'First Conditional',
+    struct:'If + Present Simple , will + V1',
+    body:`
+<p class="lead"><strong>First Conditional</strong> ใช้กับเหตุการณ์ที่<strong>เป็นไปได้และน่าจะเกิดขึ้นจริงในอนาคต</strong> เงื่อนไขเป็นไปได้จริง ผลลัพธ์ก็น่าจะเกิดขึ้นตามมา</p>
+<div class="struct-box"><span class="if-part">If + Present Simple</span><span class="arrow">,</span><span class="main-part">will + base verb (V1)</span></div>
+<h3>ตัวอย่าง</h3>
+<div class="example-list">
+<div class="example"><div class="en"><span class="if-clause">If it rains tomorrow</span>, <span class="main-clause">I will stay home</span>.</div><div class="th">ถ้าพรุ่งนี้ฝนตก ฉันจะอยู่บ้าน</div></div>
+<div class="example"><div class="en"><span class="if-clause">If you study hard</span>, <span class="main-clause">you will pass the exam</span>.</div><div class="th">ถ้าคุณตั้งใจเรียน คุณจะสอบผ่าน</div></div>
+<div class="example"><div class="en"><span class="if-clause">If she calls me</span>, <span class="main-clause">I will answer</span>.</div><div class="th">ถ้าเธอโทรหาฉัน ฉันจะรับสาย</div></div>
+<div class="example"><div class="en"><span class="if-clause">If we leave now</span>, <span class="main-clause">we will catch the bus</span>.</div><div class="th">ถ้าเราออกเดินทางตอนนี้ เราจะทันรถบัส</div></div>
+<div class="example"><div class="en"><span class="if-clause">If he doesn't hurry</span>, <span class="main-clause">he will miss the train</span>.</div><div class="th">ถ้าเขาไม่รีบ เขาจะพลาดรถไฟ</div></div>
+</div>
+<div class="warn"><strong>กฎเหล็กที่สอบชอบออก:</strong> ใน If-clause ใช้ <u>Present Simple</u> เท่านั้น <strong>ห้ามใช้ will</strong> — "If it rains, I will stay" ✅ / "If it will rain, I will stay" ❌</div>
+<div class="note"><strong>ใช้คำอื่นแทน will ได้:</strong> ใน Main clause อาจใช้ <span class="kbd">may / might</span> (อาจจะ), <span class="kbd">can</span> (สามารถ), <span class="kbd">must / should</span> (ต้อง/ควร) แล้วแต่ความหมาย — "If you finish, you can go home."</div>
+<div class="tip"><strong>วิธีจำ:</strong> ถ้าเห็น "will" ในประโยคและเหตุการณ์ยังเป็นไปได้ → First Conditional</div>
+`
+  },
+  {
+    id:'second', type:'second', tag:'Type 2', title:'Second Conditional',
+    struct:'If + Past Simple , would + V1',
+    body:`
+<p class="lead"><strong>Second Conditional</strong> ใช้กับเหตุการณ์ที่<strong>ไม่เป็นจริงหรือเป็นการจินตนาการ</strong>ในปัจจุบันหรืออนาคต เงื่อนไขเป็นไปไม่ได้หรือไม่น่าจะเกิดขึ้น จึงใช้ Past Simple เพื่อสื่อความ "ไม่จริง"</p>
+<div class="struct-box"><span class="if-part">If + Past Simple</span><span class="arrow">,</span><span class="main-part">would + base verb (V1)</span></div>
+<h3>ตัวอย่าง</h3>
+<div class="example-list">
+<div class="example"><div class="en"><span class="if-clause">If I won the lottery</span>, <span class="main-clause">I would travel the world</span>.</div><div class="th">ถ้าฉันถูกลอตเตอรี ฉันจะเดินทางรอบโลก (ความจริงไม่ได้ถูก)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If I were you</span>, <span class="main-clause">I would tell the truth</span>.</div><div class="th">ถ้าฉันเป็นคุณ ฉันจะบอกความจริง (ฉันเป็นคุณไม่ได้)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If she had more time</span>, <span class="main-clause">she would learn the guitar</span>.</div><div class="th">ถ้าเธอมีเวลามากกว่านี้ เธอจะเรียนกีตาร์ (ความจริงเธอไม่มี)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If we lived in Japan</span>, <span class="main-clause">we would eat sushi every day</span>.</div><div class="th">ถ้าเราอาศัยอยู่ที่ญี่ปุ่น เราจะกินซูชิทุกวัน (ความจริงไม่ได้อยู่)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If he were rich</span>, <span class="main-clause">he would buy a yacht</span>.</div><div class="th">ถ้าเขารวย เขาจะซื้อเรือยอชต์ (ความจริงเขาไม่รวย)</div></div>
+</div>
+<div class="warn"><strong>ข้อสอบออกบ่อยที่สุด:</strong> ใน Second Conditional ใช้ <span class="kbd">were</span> แทน <span class="kbd">was</span> กับทุกประธาน รวมถึง I / he / she / it — "If I <u>were</u> you" ✅ (ไม่ใช่ "If I was you")</div>
+<div class="note"><strong>ใช้คำอื่นแทน would ได้:</strong> ใน Main clause อาจใช้ <span class="kbd">could / might</span> — "If I had a car, I could drive there." (ถ้ามีรถ ฉันขับไปได้)</div>
+<div class="tip"><strong>วิธีจำ:</strong> "If I were you, I would..." เป็นรูปแบบให้คำแนะนำที่พบบ่อย — จำประโยคนี้ไว้เป็นตัวอย่าง</div>
+`
+  },
+  {
+    id:'third', type:'third', tag:'Type 3', title:'Third Conditional',
+    struct:'If + Past Perfect , would have + V3',
+    body:`
+<p class="lead"><strong>Third Conditional</strong> ใช้กับเหตุการณ์ใน<strong>อดีตที่ไม่เกิดขึ้นจริง</strong> มักเป็นการแสดงความเสียใจหรือสมมติว่าถ้าอดีตเป็นอย่างอื่น ผลลัพธ์ก็จะต่างไป เปลี่ยนอดีตไม่ได้จึงเป็นการสมมติล้วน</p>
+<div class="struct-box"><span class="if-part">If + Past Perfect (had + V3)</span><span class="arrow">,</span><span class="main-part">would have + V3</span></div>
+<h3>ตัวอย่าง</h3>
+<div class="example-list">
+<div class="example"><div class="en"><span class="if-clause">If I had studied harder</span>, <span class="main-clause">I would have passed the exam</span>.</div><div class="th">ถ้าฉันตั้งใจเรียนมากกว่านี้ ฉันคงสอบผ่าน (ความจริงไม่ได้ตั้งใจ และไม่ผ่าน)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If she had left earlier</span>, <span class="main-clause">she would have caught the train</span>.</div><div class="th">ถ้าเธอออกเดินทางเร็วกว่านี้ เธอคงทันรถไฟ (ความจริงออกช้า และพลาด)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If they had taken the map</span>, <span class="main-clause">they wouldn't have gotten lost</span>.</div><div class="th">ถ้าพวกเขาเอาแผนที่ไปด้วย พวกเขาคงไม่หลงทาง</div></div>
+<div class="example"><div class="en"><span class="if-clause">If it had rained</span>, <span class="main-clause">the match would have been canceled</span>.</div><div class="th">ถ้าฝนตก การแข่งขันคงถูกยกเลิก (ความจริงฝนไม่ตก)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If we had known about the traffic</span>, <span class="main-clause">we would have left earlier</span>.</div><div class="th">ถ้าเรารู้เรื่องรถติด เราคงออกเร็วกว่านี้</div></div>
+</div>
+<div class="warn"><strong>ข้อสอบชอบออก:</strong> ใช้ <span class="kbd">had + V3</span> ใน If-clause และ <span class="kbd">would have + V3</span> ใน Main clause — ห้ามสลับ และห้ามใช้ "would" ใน If-clause</div>
+<div class="note"><strong>รูปปฏิเสธ:</strong> ใช้ <span class="kbd">hadn't + V3</span> และ <span class="kbd">wouldn't have + V3</span> — "If I hadn't been sick, I would have gone to the party."</div>
+<div class="tip"><strong>วิธีจำ:</strong> ถ้าอ่านแล้วรู้สึก "น่าเสียดาย / ถ้าตอนนั้นทำให้ดีกว่านี้..." → Third Conditional ทันที</div>
+`
+  },
+  {
+    id:'mixed', type:'mixed', tag:'Mixed', title:'Mixed Conditional',
+    struct:'If + Past Perfect , would + V1  /  If + Past Simple , would have + V3',
+    body:`
+<p class="lead"><strong>Mixed Conditional</strong> คือการผสมระหว่าง Third และ Second เมื่อ<em>เงื่อนไขกับผลลัพธ์อยู่คนละช่วงเวลา</em> เช่น เงื่อนไขในอดีต แต่ผลยังเห็นในปัจจุบัน หรือเงื่อนไขเป็นเรื่องปัจจุบัน แต่ผลเกิดในอดีต</p>
+<h3>แบบที่ 1: เงื่อนไขอดีต → ผลปัจจุบัน</h3>
+<div class="struct-box"><span class="if-part">If + Past Perfect</span><span class="arrow">,</span><span class="main-part">would + V1</span></div>
+<div class="example-list">
+<div class="example"><div class="en"><span class="if-clause">If I had saved more money</span>, <span class="main-clause">I would be rich now</span>.</div><div class="th">ถ้าฉันเก็บเงินมากกว่านี้ (ในอดีต) ตอนนี้ฉันคงรวย (ปัจจุบัน)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If she had taken that job</span>, <span class="main-clause">she would live in Singapore today</span>.</div><div class="th">ถ้าเธอรับงานนั้น (อดีต) วันนี้เธอคงอยู่สิงคโปร์ (ปัจจุบัน)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If we hadn't missed the flight</span>, <span class="main-clause">we would be in Tokyo now</span>.</div><div class="th">ถ้าเราไม่พลาดเที่ยวบิน (อดีต) ตอนนี้เราคงอยู่โตเกียว (ปัจจุบัน)</div></div>
+</div>
+<h3>แบบที่ 2: เงื่อนไขปัจจุบัน → ผลอดีต</h3>
+<div class="struct-box"><span class="if-part">If + Past Simple</span><span class="arrow">,</span><span class="main-part">would have + V3</span></div>
+<div class="example-list">
+<div class="example"><div class="en"><span class="if-clause">If I were a better driver</span>, <span class="main-clause">I would have won the race</span>.</div><div class="th">ถ้าฉันเป็นคนขับที่เก่งกว่านี้ (ปัจจุบัน-สมมติ) ฉันคงชนะการแข่ง (อดีต)</div></div>
+<div class="example"><div class="en"><span class="if-clause">If she weren't so shy</span>, <span class="main-clause">she would have spoken up in the meeting</span>.</div><div class="th">ถ้าเธอไม่ขี้อาย (ลักษณะปัจจุบัน) เธอคงพูดในที่ประชุม (อดีต)</div></div>
+</div>
+<div class="tip"><strong>วิธีจำ:</strong> ดูคำว่า <span class="kbd">now / today</span> ที่บอกปัจจุบัน และคำบอกเวลาอดีต เช่น <span class="kbd">yesterday / last week</span> — ถ้าเงื่อนไขกับผลอยู่คนละเวลา → Mixed</div>
+<div class="note"><strong>สรุปโครงสร้าง:</strong> Tense ในแต่ละ clause บอกเวลาของส่วนนั้น — Past Perfect = อดีก และ Past Simple = ปัจจุบันสมมติ, would + V1 = ปัจจุบัน/อนาคต, would have + V3 = อดีต</div>
+`
+  },
+  {
+    id:'alt', type:'alt', tag:'Alternatives', title:'คำเชื่อมทางเลือก (unless, as long as, provided that)',
+    struct:'unless / as long as / provided that / in case / even if + clause',
+    body:`
+<p class="lead">นอกจาก <span class="kbd">if</span> แล้ว ยังมีคำเชื่อมอื่นที่ใช้แทนหรือเพิ่มความหมายเงื่อนไขได้ คำเหล่านี้มักออกสอบในส่วน "เลือกคำที่ถูกต้อง" หรือ "เติมคำ"</p>
+<h3>① unless = if ... not (ถ้าไม่)</h3>
+<div class="example"><div class="en"><span class="if-clause">Unless you hurry</span>, <span class="main-clause">you will miss the bus</span>.</div><div class="th">ถ้าคุณไม่รีบ คุณจะพลาดรถบัส</div></div>
+<div class="example"><div class="en">I won't go to the party <span class="if-clause">unless she comes</span>.</div><div class="th">ฉันจะไม่ไปงานเลี้ยง ถ้าเธอไม่มา</div></div>
+<div class="warn"><strong>ระวัง:</strong> อย่าใช้ not ซ้อ — "Unless you don't hurry" ❌ เพราะ unless มีความหมายเป็น "ถ้าไม่" อยู่แล้ว</div>
+<h3>② as long as = ตราบใดที่ (เน้นเงื่อนไขต้องเป็นจริงตลอด)</h3>
+<div class="example"><div class="en">You can borrow my car <span class="if-clause">as long as you drive carefully</span>.</div><div class="th">คุณยืมรถฉันได้ ตราบใดที่คุณขับอย่างระมัดระวัง</div></div>
+<div class="example"><div class="en"><span class="if-clause">As long as you finish your homework</span>, <span class="main-clause">you can play games</span>.</div><div class="th">ตราบใดที่คุณทำการบ้านเสร็จ คุณเล่นเกมได้</div></div>
+<h3>③ provided (that) = โดยมีเงื่อนไขว่า (ทางการกว่า as long as)</h3>
+<div class="example"><div class="en">You may leave early <span class="if-clause">provided that you finish the report</span>.</div><div class="th">คุณกลับก่อนได้ โดยมีเงื่อนไขว่าคุณทำรายงานเสร็จ</div></div>
+<div class="example"><div class="en"><span class="if-clause">Provided that the weather is good</span>, <span class="main-clause">we will have a picnic</span>.</div><div class="th">โดยมีเงื่อนไขว่าอากาศดี เราจะไปปิกนิก</div></div>
+<h3>④ in case = ในกรณีที่ (เตรียมไว้ เพราะกลัวว่าจะ...)</h3>
+<div class="example"><div class="en">Take an umbrella <span class="if-clause">in case it rains</span>.</div><div class="th">เอาร่มไปด้วย ในกรณีที่ฝนตก (เผื่อไว้)</div></div>
+<div class="note"><strong>ความต่าง if vs in case:</strong> if = ถ้าเกิดเหตุการณ์นั้นจริง / in case = เตรียมไว้เพราะกลัวว่าจะเกิด — "Take an umbrella if it rains" (ถ้าฝนตกค่อยเอา — ผิดความหมาย) vs "Take an umbrella in case it rains" (เอาไว้ก่อน เผื่อฝนตก)</div>
+<h3>⑤ even if = แม้แต่ถ้า (เน้นว่าไม่ว่าจะเกิดหรือไม่เกิด ผลก็เหมือนเดิม)</h3>
+<div class="example"><div class="en"><span class="if-clause">Even if you apologize</span>, <span class="main-clause">I won't forgive you</span>.</div><div class="th">แม้แต่ถ้าคุณจะขอโทษ ฉันก็จะไม่ยกโทษให้</div></div>
+<h3>⑥ whether or not = ไม่ว่าจะ...หรือไม่</h3>
+<div class="example"><div class="en"><span class="if-clause">Whether or not it rains</span>, <span class="main-clause">the game will go on</span>.</div><div class="th">ไม่ว่าฝนจะตกหรือไม่ เกมก็จะจัดต่อไป</div></div>
+<div class="tip"><strong>สรุป:</strong> unless / as long as / provided that ใช้กับ First Conditional (เหตุการณ์เป็นไปได้) ส่วน even if / whether or not ใช้กับทุกประเภทได้ แล้วแต่บริบท</div>
+`
+  }
+];
+
+/* ============================================================
+   DATA: EXERCISES — Multiple Choice
+   ============================================================ */
+const MC_QUESTIONS = [
+  {q:'If you heat ice, it ____ .', opts:['melts','melted','will melt','would melt'], a:0, type:'zero',
+   exp:'Zero Conditional: ความจริงทางวิทยาศาสตร์ → ทั้งสอง clause เป็น Present Simple ใช้ "melts"'},
+  {q:'If it rains tomorrow, I ____ at home.', opts:['stay','will stay','would stay','stayed'], a:1, type:'first',
+   exp:'First Conditional: เหตุการณ์เป็นไปได้ในอนาคต → Main clause ใช้ "will + V1" คือ "will stay"'},
+  {q:'If I ____ you, I would tell the truth.', opts:['am','was','were','had been'], a:2, type:'second',
+   exp:'Second Conditional: ใช้ "were" แทน "was" กับทุกประธาน — "If I were you" เป็นรูปแบบให้คำแนะนำที่ต้องจำ'},
+  {q:'If she had studied harder, she ____ the exam.', opts:['would pass','would have passed','will pass','passed'], a:1, type:'third',
+   exp:'Third Conditional: อดีตที่ไม่เกิดจริง → Main clause ใช้ "would have + V3" คือ "would have passed"'},
+  {q:'If I ____ a bird, I would fly.', opts:['am','was','were','had been'], a:2, type:'second',
+   exp:'Second Conditional: จินตนาการ → ใช้ "were" แม้ประธานเอกพจน์ "I"'},
+  {q:'Water ____ if the temperature falls below 0°C.', opts:['freezes','will freeze','would freeze','froze'], a:0, type:'zero',
+   exp:'Zero Conditional: กฎทางวิทยาศาสตร์ → Present Simple ทั้งคู่ "freezes"'},
+  {q:'If we ____ now, we will catch the bus.', opts:['leave','left','will leave','had left'], a:0, type:'first',
+   exp:'First Conditional: If-clause ใช้ Present Simple "leave" ห้ามใช้ will ใน If-clause'},
+  {q:'If they had taken the map, they ____ lost.', opts:['wouldn\'t get','wouldn\'t have gotten','won\'t get','don\'t get'], a:1, type:'third',
+   exp:'Third Conditional: เงื่อนไขอดีต → ผลอดีต "wouldn\'t have gotten" (would have + V3 รูปปฏิเสธ)'},
+  {q:'If I ____ rich, I would buy a yacht.', opts:['am','was','were','will be'], a:2, type:'second',
+   exp:'Second Conditional: ไม่จริงในปัจจุบัน → ใช้ "were"'},
+  {q:'When you ____ water to 100°C, it boils.', opts:['heat','will heat','heated','would heat'], a:0, type:'zero',
+   exp:'Zero Conditional: "when" แทน "if" ได้เพราะเป็นความจริงเสมอ → Present Simple "heat"'},
+  {q:'If she ____ the lottery, she would travel the world.', opts:['wins','won','had won','will win'], a:1, type:'second',
+   exp:'Second Conditional: ไม่น่าจะเกิดขึ้น → If-clause ใช้ Past Simple "won"'},
+  {q:'Unless you ____, you will fail the test.', opts:['don\'t study','study','will study','studied'], a:1, type:'alt',
+   exp:'unless = if not → "Unless you study" = "If you don\'t study" ห้ามใช้ not ซ้อน'},
+  {q:'You can borrow my book ____ you return it tomorrow.', opts:['unless','as long as','even if','whether'], a:1, type:'alt',
+   exp:'as long as = ตราบใดที่ เน้นเงื่อนไขต้องทำตาม → "as long as you return it tomorrow"'},
+  {q:'If he ____ harder last year, he would be a manager now.', opts:['worked','works','had worked','would work'], a:2, type:'mixed',
+   exp:'Mixed Conditional: เงื่อนไขอดีต (last year) → ผลปัจจุบัน (now) → If + Past Perfect "had worked", would + V1'},
+  {q:'Take a jacket ____ it gets cold at night.', opts:['if','in case','unless','provided'], a:1, type:'alt',
+   exp:'in case = เผื่อไว้ เตรียมไว้ก่อน → "in case it gets cold" (เอาเสื้อไปก่อนเพราะกลัวว่าจะหนาว)'}
+];
+
+/* ============================================================
+   DATA: Fill-in-the-blank
+   ============================================================ */
+const FILL_QUESTIONS = [
+  {q:'If you mix blue and yellow, you ___ green.', ans:['get'], type:'zero',
+   exp:'Zero Conditional — ความจริงเสมอ Present Simple "get"'},
+  {q:'If I ___ (be) you, I would apologize.', ans:['were','was'], type:'second',
+   exp:'Second Conditional — ใช้ "were" แม้ประธานเอกพจน์ (was ยอมรับได้ในภาษาพูด แต่ข้อสอบมักต้องการ were)'},
+  {q:'If she had called me, I ___ (will) have answered.', ans:['would'], type:'third',
+   exp:'Third Conditional — Main clause "would have + V3" → เติม "would"'},
+  {q:'If it rains tomorrow, we ___ (will) cancel the picnic.', ans:['will'], type:'first',
+   exp:'First Conditional — Main clause "will + V1"'},
+  {q:'If they ___ (have) more money, they would buy a house.', ans:['had'], type:'second',
+   exp:'Second Conditional — If-clause Past Simple → "had" (ไม่ใช่ have/had had)'},
+  {q:'If you don\'t hurry, you ___ (will) miss the train.', ans:['will'], type:'first',
+   exp:'First Conditional — ผลในอนาคตที่เป็นไปได้ "will miss"'},
+  {q:'If he ___ (study) harder, he would have passed the exam last year.', ans:['had studied'], type:'mixed',
+   exp:'Mixed Conditional — เงื่อนไขอดีต, ผลอดีต: จริงๆ ประโยคนี้เป็น Third Conditional เต็มรูป "If he had studied harder, he would have passed"'},
+  {q:'Ice ___ (melt) if you leave it in the sun.', ans:['melts'], type:'zero',
+   exp:'Zero Conditional — ความจริงทางธรรมชาติ Present Simple "melts"'},
+  {q:'If I had known about the meeting, I ___ (will) have attended.', ans:['would'], type:'third',
+   exp:'Third Conditional — "would have + V3" → เติม "would"'},
+  {q:'You can go out ___ (provided/as long as/in case) you finish your homework.', ans:['provided','provided that','as long as','as long as that'], type:'alt',
+   exp:'provided (that) / as long as = โดยมีเงื่อนไขว่า → ตอบได้ทั้งสองคำ'}
+];
+
+/* ============================================================
+   DATA: Reorder
+   ============================================================ */
+const REORDER_QUESTIONS = [
+  {words:['If','it','rains','tomorrow',',','I','will','stay','home','.'], correct:'If it rains tomorrow, I will stay home.', type:'first',
+   th:'ถ้าพรุ่งนี้ฝนตก ฉันจะอยู่บ้าน'},
+  {words:['If','I','were','you',',','I','would','tell','the','truth','.'], correct:'If I were you, I would tell the truth.', type:'second',
+   th:'ถ้าฉันเป็นคุณ ฉันจะบอกความจริง'},
+  {words:['If','she','had','studied','harder',',','she','would','have','passed','.'], correct:'If she had studied harder, she would have passed.', type:'third',
+   th:'ถ้าเธอตั้งใจเรียนมากกว่านี้ เธอคงสอบผ่าน'},
+  {words:['You','heat','ice',',','it','melts','.','If'], correct:'If you heat ice, it melts.', type:'zero',
+   th:'ถ้าคุณเติมความร้อนให้น้ำแข็ง มันจะละลาย (หมายเหตุ: คำ If อยู่ท้ายใน pool ให้คิดลำดับใหม่)'},
+  {words:['Unless','you','hurry',',','you','will','miss','the','bus','.'], correct:'Unless you hurry, you will miss the bus.', type:'alt',
+   th:'ถ้าคุณไม่รีบ คุณจะพลาดรถบัส'}
+];
+
+/* ============================================================
+   DATA: TESTS (Pre & Post)
+   ============================================================ */
+const TESTS = {
+  pre:[
+    {q:'If you heat water to 100°C, it ____ .', opts:['boils','boiled','will boil','would boil'], a:0,
+     exp:'Zero — ความจริงทางวิทยาศาสตร์ Present Simple "boils"'},
+    {q:'If I ____ time, I will help you.', opts:['have','had','will have','had had'], a:0,
+     exp:'First — If-clause Present Simple "have"'},
+    {q:'If I were a millionaire, I ____ a big house.', opts:['will buy','would buy','bought','would have bought'], a:1,
+     exp:'Second — Main clause "would + V1"'},
+    {q:'If she had taken the bus, she ____ on time.', opts:['would be','would have been','will be','is'], a:1,
+     exp:'Third — "would have been" (would have + V3)'},
+    {q:'If you ____ ice, it melts.', opts:['will heat','heat','heated','would heat'], a:1,
+     exp:'Zero — Present Simple ทั้งคู่ "heat"'},
+    {q:'If he ____ harder, he would pass the exam.', opts:['studies','studied','had studied','will study'], a:1,
+     exp:'Second — If-clause Past Simple "studied"'},
+    {q:'If they ____ the truth, they would have told us.', opts:['know','knew','had known','will know'], a:2,
+     exp:'Third — If-clause Past Perfect "had known"'},
+    {q:'If it rains, the ground ____ wet.', opts:['gets','got','will get','would get'], a:0,
+     exp:'Zero — ความจริงเสมอ Present Simple "gets" (บางครั้งใช้ First ก็ได้ แต่ "the ground gets wet" เป็นผลที่เกิดเสมอเมื่อฝนตก → Zero เหมาะที่สุด)'},
+    {q:'If I ____ you, I would talk to the teacher.', opts:['am','was','were','had been'], a:2,
+     exp:'Second — "were" แทน "was"'},
+    {q:'Unless you ____, you will be late.', opts:["don't hurry",'hurry','will hurry','hurried'], a:1,
+     exp:'unless = if not → "Unless you hurry" = "If you don\'t hurry" ห้ามใช้ not ซ้อน'}
+  ],
+  post:[
+    {q:'If she ____ the medicine yesterday, she would feel better now.', opts:['took','takes','had taken','would take'], a:2,
+     exp:'Mixed Conditional — เงื่อนไขอดีต (yesterday) ผลปัจจุบัน (now) → If + Past Perfect "had taken"'},
+    {q:'If I were taller, I ____ basketball for the school team last year.', opts:['would play','would have played','will play','played'], a:1,
+     exp:'Mixed Conditional — เงื่อนไขปัจจุบัน (ลักษณะ), ผลอดีต (last year) → "would have + V3"'},
+    {q:'You may use my laptop ____ you return it by Friday.', opts:['unless','as long as','even if','in case'], a:1,
+     exp:'as long as = ตราบใดที่ (เน้นเงื่อนไข) เหมาะกับการให้ยืมโดยมีเงื่อนไข'},
+    {q:'If we ____ about the traffic, we would have left earlier.', opts:['knew','had known','know','would know'], a:1,
+     exp:'Third — If-clause Past Perfect "had known"'},
+    {q:'Bring a map ____ you get lost.', opts:['if','in case','unless','provided'], a:1,
+     exp:'in case = เผื่อไว้ เตรียมไว้ก่อน → "in case you get lost" (เอาแผนที่ไปก่อน เพราะกลัวว่าจะหลง)'},
+    {q:'If you ____ ice in the sun, it melts.', opts:['leave','left','will leave','would leave'], a:0,
+     exp:'Zero — Present Simple ทั้งคู่ "leave"'},
+    {q:'If I ____ the answer, I would tell you.', opts:['know','knew','had known','will know'], a:1,
+     exp:'Second — If-clause Past Simple "knew"'},
+    {q:'____ you apologize, I won\'t forgive you.', opts:['If','Unless','Even if','Whether'], a:2,
+     exp:'even if = แม้แต่ถ้า เน้นว่าผลเหมือนเดิมไม่ว่าจะเกิดหรือไม่ → "Even if you apologize, I won\'t forgive you"'},
+    {q:'If he ____ his keys, he wouldn\'t be locked out now.', opts:['didn\'t forget','hadn\'t forgotten','doesn\'t forget','forgot'], a:1,
+     exp:'Mixed Conditional — เงื่อนไขอดีต ผลปัจจุบัน (now) → If + Past Perfect "hadn\'t forgotten", would + V1'},
+    {q:'Provided that the weather ____ fine, we will go camping.', opts:['is','will be','was','were'], a:0,
+     exp:'provided that + clause เหมือน if ใน First Conditional → If-clause Present Simple "is"'}
+  ]
+};
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function go(sec){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(sec).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active', a.dataset.sec===sec));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(sec==='progress') renderProgress();
+  if(sec==='summary'){ renderSummaryTable(); resetSearch(); }
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>go(a.dataset.sec));
+});
+
+/* ============================================================
+   LESSONS RENDER
+   ============================================================ */
+function renderLessonIndex(){
+  const idx=document.getElementById('lessonIndex');
+  idx.innerHTML=LESSONS.map(l=>`
+    <div class="lesson-tile ${l.type}" onclick="openLesson('${l.id}')">
+      <span class="tag">${l.tag}</span>
+      <h4>${l.title}</h4>
+      <div class="struct">${l.struct}</div>
+    </div>`).join('');
+}
+function openLesson(id){
+  const l=LESSONS.find(x=>x.id===id);
+  if(!l) return;
+  const c=document.getElementById('lessonContent');
+  c.innerHTML=`
+    <div class="card">
+      <span class="back-link" onclick="document.getElementById('lessonContent').innerHTML='';window.scrollTo({top:0,behavior:'smooth'})">← กลับสู่หน้าบทเรียน</span>
+      <span class="type-badge type-${l.type}">${l.tag}</span>
+      <h2>${l.title}</h2>
+      <div class="struct-box" style="font-size:1rem">${l.struct}</div>
+      ${l.body}
+      <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+        ${prevLessonBtn(id)}
+        <button class="btn btn-primary" onclick="go('exercises')">✍️ ไปทำแบบฝึกหัด</button>
+        ${nextLessonBtn(id)}
+      </div>
+    </div>`;
+  window.scrollTo({top:document.getElementById('lessonContent').offsetTop-80,behavior:'smooth'});
+}
+function prevLessonBtn(id){
+  const i=LESSONS.findIndex(x=>x.id===id);
+  if(i<=0) return '';
+  const p=LESSONS[i-1];
+  return `<button class="btn" style="background:#e2e8f0;color:#1e293b" onclick="openLesson('${p.id}')">← ${p.title}</button>`;
+}
+function nextLessonBtn(id){
+  const i=LESSONS.findIndex(x=>x.id===id);
+  if(i>=LESSONS.length-1) return `<button class="btn btn-primary" onclick="go('tests');setTimeout(()=>startTest('post'),300)">📝 ทำ Post-test →</button>`;
+  const n=LESSONS[i+1];
+  return `<button class="btn btn-primary" onclick="openLesson('${n.id}')">${n.title} →</button>`;
+}
+
+/* ============================================================
+   EXERCISES — Multiple Choice
+   ============================================================ */
+function renderMC(){
+  const p=document.getElementById('pane-mc');
+  p.innerHTML=`<div class="card"><h3>① เลือกตอบ (15 ข้อ)</h3><p class="lead">คลิกตัวเลือกที่ถูกต้อง เห็นเฉลยและคำอธิบายทันที คะแนนรวมอยู่ด้านล่าง</p>
+    <div id="mcScore" class="score-pill" style="margin-bottom:14px">คะแนน: 0 / ${MC_QUESTIONS.length}</div></div>`+
+    MC_QUESTIONS.map((q,i)=>`
+    <div class="q-block" id="mcq${i}">
+      <div class="q-text"><span class="q-num">${i+1}</span>${highlightBlank(q.q)}</div>
+      <div class="opts">
+        ${q.opts.map((o,j)=>`<div class="opt" onclick="ansMC(${i},${j})">${o}</div>`).join('')}
+      </div>
+      <div class="feedback" id="mcfb${i}"></div>
+    </div>`).join('');
+}
+let mcAnswered={};
+function ansMC(i,j){
+  if(mcAnswered[i]) return;
+  const q=MC_QUESTIONS[i];
+  const opts=document.querySelectorAll(`#mcq${i} .opt`);
+  opts.forEach(o=>o.classList.add('disabled'));
+  opts[q.a].classList.add('correct');
+  const fb=document.getElementById(`mcfb${i}`);
+  if(j===q.a){
+    mcAnswered[i]=true;
+    fb.className='feedback show correct';
+    fb.innerHTML=`✅ <strong>ถูกต้อง!</strong> <div class="exp">${q.exp}</div>`;
+  }else{
+    opts[j].classList.add('wrong');
+    mcAnswered[i]=false;
+    fb.className='feedback show wrong';
+    fb.innerHTML=`❌ <strong>ยังไม่ถูก</strong> คำตอบที่ถูกคือ <strong>${q.opts[q.a]}</strong><div class="exp">${q.exp}</div>`;
+  }
+  updateMCScore();
+}
+function updateMCScore(){
+  const correct=Object.values(mcAnswered).filter(Boolean).length;
+  const total=MC_QUESTIONS.length;
+  document.getElementById('mcScore').textContent=`คะแนน: ${correct} / ${total}`;
+  if(correct===total && Object.keys(mcAnswered).length===total){
+    saveScore('แบบฝึกหัด: เลือกตอบ', correct, total);
+    setTimeout(()=>{ if(confirm('🎉 คุณทำครบทุกข้อและถูกทั้งหมด! บันทึกคะแนนแล้ว อยากลองแบบฝึกหัดอื่นไหม?')) go('exercises'); },100);
+  }else if(Object.keys(mcAnswered).length===total){
+    saveScore('แบบฝึกหัด: เลือกตอบ', correct, total);
+  }
+}
+function highlightBlank(s){ return s.replace(/____/g,'<span class="blank">?</span>'); }
+
+/* ============================================================
+   EXERCISES — Fill-in
+   ============================================================ */
+function renderFill(){
+  const p=document.getElementById('pane-fill');
+  p.innerHTML=`<div class="card"><h3>② กรอกคำ (10 ข้อ)</h3><p class="lead">พิมพ์คำตอบลงในช่องว่าง แล้วกดปุ่ม "ตรวจ" รับคำได้หลายคำ (คั่นด้วย / )</p>
+    <div id="fillScore" class="score-pill" style="margin-bottom:14px">คะแนน: 0 / ${FILL_QUESTIONS.length}</div></div>`+
+    FILL_QUESTIONS.map((q,i)=>`
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">${i+1}</span>${q.q.replace(/___[^_]*\./g, m=>`<input class="fill-input" id="fill${i}" placeholder="พิมพ์คำตอบ">`)}</div>
+      <button class="btn btn-primary" onclick="ansFill(${i})">ตรวจ</button>
+      <div class="feedback" id="fillfb${i}"></div>
+    </div>`).join('');
+}
+let fillAnswered={};
+function ansFill(i){
+  if(fillAnswered[i]) return;
+  const q=FILL_QUESTIONS[i];
+  const inp=document.getElementById(`fill${i}`);
+  const val=(inp.value||'').trim().toLowerCase();
+  const ok=q.ans.some(a=>a.toLowerCase()===val);
+  const fb=document.getElementById(`fillfb${i}`);
+  inp.disabled=true;
+  if(ok){
+    fillAnswered[i]=true;
+    fb.className='feedback show correct';
+    fb.innerHTML=`✅ <strong>ถูกต้อง!</strong> คำตอบ: ${q.ans.join(' / ')}<div class="exp">${q.exp}</div>`;
+  }else{
+    fillAnswered[i]=false;
+    fb.className='feedback show wrong';
+    fb.innerHTML=`❌ <strong>ยังไม่ถูก</strong> คำตอบที่ถูก: ${q.ans.join(' / ')}<div class="exp">${q.exp}</div>`;
+  }
+  const correct=Object.values(fillAnswered).filter(Boolean).length;
+  document.getElementById('fillScore').textContent=`คะแนน: ${correct} / ${FILL_QUESTIONS.length}`;
+  if(Object.keys(fillAnswered).length===FILL_QUESTIONS.length){
+    saveScore('แบบฝึกหัด: กรอกคำ', correct, FILL_QUESTIONS.length);
+  }
+}
+
+/* ============================================================
+   EXERCISES — Reorder
+   ============================================================ */
+function renderReorder(){
+  const p=document.getElementById('pane-reorder');
+  p.innerHTML=`<div class="card"><h3>③ เรียงประโยค (5 ข้อ)</h3><p class="lead">คลิกคำในกล่องด้านล่างตามลำดับที่ถูกต้อง เรียงจนครบแล้วกด "ตรวจ"</p></div>`+
+    REORDER_QUESTIONS.map((q,i)=>`
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">${i+1}</span>เรียงประโยคให้ถูกต้อง <span class="pill" style="background:#eef2ff;color:var(--primary)">${q.type}</span></div>
+      <div class="answer-bar" id="ans${i}" data-i="${i}"></div>
+      <div class="reorder-area" id="pool${i}"></div>
+      <div style="margin-top:10px;display:flex;gap:8px">
+        <button class="btn btn-primary" onclick="ansReorder(${i})">ตรวจ</button>
+        <button class="btn" style="background:#e2e8f0;color:#1e293b" onclick="resetReorder(${i})">↺ ล้างแล้วเริ่มใหม่</button>
+      </div>
+      <div class="feedback" id="rofb${i}"></div>
+    </div>`).join('');
+  REORDER_QUESTIONS.forEach((q,i)=>initReorder(i));
+}
+function initReorder(i){
+  const pool=document.getElementById(`pool${i}`);
+  // shuffle
+  const words=[...REORDER_QUESTIONS[i].words];
+  for(let k=words.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[words[k],words[j]]=[words[j],words[k]];}
+  pool.innerHTML=words.map((w,k)=>`<span class="word-chip pool" data-w="${w}" onclick="moveWord(${i},this)">${w}</span>`).join('');
+}
+function moveWord(i,el){
+  if(el.classList.contains('pool')){
+    const ans=document.getElementById(`ans${i}`);
+    el.classList.remove('pool');
+    ans.appendChild(el);
+  }else{
+    const pool=document.getElementById(`pool${i}`);
+    el.classList.add('pool');
+    pool.appendChild(el);
+  }
+}
+function resetReorder(i){
+  document.getElementById(`ans${i}`).innerHTML='';
+  initReorder(i);
+  document.getElementById(`rofb${i}`).classList.remove('show');
+}
+let reorderAnswered={};
+function ansReorder(i){
+  if(reorderAnswered[i]) return;
+  const ans=document.getElementById(`ans${i}`);
+  const built=[...ans.querySelectorAll('.word-chip')].map(c=>c.dataset.w).join(' ');
+  // normalize spaces around punctuation
+  const norm=built.replace(/\s+([,.])/g,'$1').replace(/([,.])(\S)/g,'$1 $2').trim();
+  const correct=REORDER_QUESTIONS[i].correct.trim();
+  const fb=document.getElementById(`rofb${i}`);
+  if(norm===correct){
+    reorderAnswered[i]=true;
+    fb.className='feedback show correct';
+    fb.innerHTML=`✅ <strong>ถูกต้อง!</strong> ${correct}<div class="exp">${REORDER_QUESTIONS[i].th}</div>`;
+  }else{
+    reorderAnswered[i]=false;
+    fb.className='feedback show wrong';
+    fb.innerHTML=`❌ <strong>ยังไม่ถูก</strong> คำตอบที่ถูก: ${correct}<div class="exp">${REORDER_QUESTIONS[i].th}</div>`;
+  }
+  const right=Object.values(reorderAnswered).filter(Boolean).length;
+  if(Object.keys(reorderAnswered).length===REORDER_QUESTIONS.length){
+    saveScore('แบบฝึกหัด: เรียงประโยค', right, REORDER_QUESTIONS.length);
+  }
+}
+
+/* ============================================================
+   TABS (exercises & tests)
+   ============================================================ */
+function setupTabs(containerId){
+  document.querySelectorAll(`#${containerId} .tab`).forEach(t=>{
+    t.addEventListener('click',()=>{
+      document.querySelectorAll(`#${containerId} .tab`).forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      const tab=t.dataset.tab;
+      document.querySelectorAll(`#${containerId} ~ .tab-pane, #${containerId}`).forEach(()=>{});
+      // toggle panes by convention
+      const root=containerId==='exTabs'?document.getElementById('exercises'):document.getElementById('tests');
+      root.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+      const paneId = containerId==='exTabs' ? `pane-${tab}` : `test-pane-${tab}`;
+      document.getElementById(paneId).classList.add('active');
+    });
+  });
+}
+
+/* ============================================================
+   TESTS
+   ============================================================ */
+let testState={};
+function startTest(kind){
+  const bodyId=kind==='pre'?'preBody':'postBody';
+  const introId=kind==='pre'?'preIntro':'postIntro';
+  document.getElementById(introId).style.display='none';
+  const body=document.getElementById(bodyId);
+  const qs=TESTS[kind];
+  testState[kind]={answered:{},start:Date.now(),timer:null};
+  body.innerHTML=`
+    <div class="test-meta">
+      <span class="timer" id="timer-${kind}">⏱ 15:00</span>
+      <span class="score-pill" id="tscore-${kind}">ตอบแล้ว: 0/${qs.length}</span>
+      <span style="color:var(--muted);font-size:.9rem">💡 เลือกแล้วเปลี่ยนใจได้ กด "ส่งคำตอบ" จึงจะล็อกและตรวจ</span>
+      <button class="btn btn-primary" onclick="submitTest('${kind}')">✅ ส่งคำตอบ</button>
+    </div>`+
+    qs.map((q,i)=>`
+    <div class="q-block" id="tq-${kind}-${i}">
+      <div class="q-text"><span class="q-num">${i+1}</span>${highlightBlank(q.q)}</div>
+      <div class="opts">
+        ${q.opts.map((o,j)=>`<div class="opt" onclick="ansTest('${kind}',${i},${j})">${o}</div>`).join('')}
+      </div>
+      <div class="feedback" id="tfb-${kind}-${i}"></div>
+    </div>`).join('');
+  // timer
+  let remain=15*60;
+  testState[kind].timer=setInterval(()=>{
+    remain--;
+    const m=Math.floor(remain/60),s=remain%60;
+    const el=document.getElementById(`timer-${kind}`);
+    if(el) el.textContent=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(remain<=0){ clearInterval(testState[kind].timer); alert('หมดเวลา! ส่งคำตอบอัตโนมัติ'); submitTest(kind); }
+  },1000);
+}
+function ansTest(kind,i,j){
+  const opts=document.querySelectorAll(`#tq-${kind}-${i} .opt`);
+  const prev=testState[kind].answered[i];
+  // toggle: click the already-selected option again to deselect; otherwise switch selection
+  if(prev===j){
+    opts[j].classList.remove('selected');
+    delete testState[kind].answered[i];
+  }else{
+    opts.forEach(o=>o.classList.remove('selected'));
+    opts[j].classList.add('selected');
+    testState[kind].answered[i]=j;
+  }
+  const answered=Object.keys(testState[kind].answered).length;
+  document.getElementById(`tscore-${kind}`).textContent=`ตอบแล้ว: ${answered}/${TESTS[kind].length}`;
+}
+function submitTest(kind){
+  if(!testState[kind]) return;
+  clearInterval(testState[kind].timer);
+  const qs=TESTS[kind];
+  let correct=0;
+  qs.forEach((q,i)=>{
+    const opts=document.querySelectorAll(`#tq-${kind}-${i} .opt`);
+    opts.forEach(o=>o.classList.remove('selected'));
+    opts[q.a].classList.add('correct');
+    const fb=document.getElementById(`tfb-${kind}-${i}`);
+    const sel=testState[kind].answered[i];
+    if(sel===q.a){
+      correct++;
+      fb.className='feedback show correct';
+      fb.innerHTML=`✅ <strong>ถูก</strong><div class="exp">${q.exp}</div>`;
+    }else{
+      if(sel!==undefined) opts[sel].classList.add('wrong');
+      fb.className='feedback show wrong';
+      fb.innerHTML=`❌ <strong>คำตอบที่ถูก: ${q.opts[q.a]}</strong><div class="exp">${q.exp}</div>`;
+    }
+    // lock after submit
+    opts.forEach(o=>o.classList.add('disabled'));
+  });
+  const pct=Math.round(correct/qs.length*100);
+  saveScore(kind==='pre'?'Pre-test':'Post-test', correct, qs.length);
+  // result box
+  const bodyId=kind==='pre'?'preBody':'postBody';
+  const body=document.getElementById(bodyId);
+  const result=document.createElement('div');
+  result.className='result-box';
+  let grade='ฝึกอีกนิดนะ 💪';
+  if(pct>=80) grade='เก่งมาก! 🌟';
+  else if(pct>=60) grade='ดีแล้ว พยายามต่อ 👍';
+  result.innerHTML=`<div class="big">${correct}/${qs.length}</div><div class="lbl">คะแนน ${pct}% — ${grade}</div>
+    <div style="margin-top:14px"><button class="btn btn-white" onclick="resetTest('${kind}')">↺ ทำใหม่</button>
+    <button class="btn btn-ghost" onclick="go('progress')">📈 ดูผลคะแนน</button></div>`;
+  body.insertBefore(result, body.firstChild);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function resetTest(kind){
+  testState[kind]=null;
+  document.getElementById(kind==='pre'?'preBody':'postBody').innerHTML='';
+  document.getElementById(kind==='pre'?'preIntro':'postIntro').style.display='block';
+}
+
+/* ============================================================
+   PROGRESS (localStorage)
+   ============================================================ */
+function loadScores(){ try{return JSON.parse(localStorage.getItem('condScores')||'[]')}catch(e){return[]} }
+function saveScore(label,correct,total){
+  const scores=loadScores();
+  scores.push({label,correct,total,pct:Math.round(correct/total*100),date:new Date().toLocaleString('th-TH')});
+  localStorage.setItem('condScores',JSON.stringify(scores));
+}
+function renderProgress(){
+  const list=document.getElementById('progressList');
+  const sum=document.getElementById('progressSummary');
+  const scores=loadScores();
+  if(!scores.length){
+    list.innerHTML=`<div class="empty-state"><div class="ico">📭</div>ยังไม่มีคะแนนบันทึก<br>ไปทำแบบฝึกหัดหรือแบบทดสอบก่อนนะ</div>`;
+    sum.innerHTML='<p class="lead">ยังไม่มีข้อมูลสรุป</p>';
+    return;
+  }
+  list.innerHTML=`<div class="progress-list">`+scores.slice().reverse().map(s=>`
+    <div class="progress-item">
+      <div style="flex:1;min-width:200px">
+        <div class="info">${s.label}</div>
+        <div style="color:var(--muted);font-size:.85rem">${s.date}</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${s.pct}%"></div></div>
+      </div>
+      <div class="score">${s.correct}/${s.total} <span style="font-size:.85rem;color:var(--muted)">(${s.pct}%)</span></div>
+    </div>`).join('')+`</div>`;
+  // summary
+  const pre=scores.filter(s=>s.label==='Pre-test');
+  const post=scores.filter(s=>s.label==='Post-test');
+  let html='<ul class="bullets">';
+  html+=`<li>ทำแบบฝึก/ทดสอบทั้งหมด <strong>${scores.length}</strong> ครั้ง</li>`;
+  if(pre.length) html+=`<li>Pre-test คะแนนสูงสุด: <strong>${Math.max(...pre.map(s=>s.pct))}%</strong> (${pre.length} ครั้ง)</li>`;
+  if(post.length) html+=`<li>Post-test คะแนนสูงสุด: <strong>${Math.max(...post.map(s=>s.pct))}%</strong> (${post.length} ครั้ง)</li>`;
+  if(pre.length && post.length){
+    const preMax=Math.max(...pre.map(s=>s.pct));
+    const postMax=Math.max(...post.map(s=>s.pct));
+    const diff=postMax-preMax;
+    html+=`<li>พัฒนาการ (สูงสุด): <strong style="color:${diff>=0?'var(--green)':'var(--red)'}">${diff>=0?'+':''}${diff}%</strong> ${diff>=0?'🎉 ดีขึ้น!':'⚠️ ลดลง ลองทบทวนบทเรียน'}</li>`;
+  }
+  html+='</ul>';
+  sum.innerHTML=html;
+}
+function clearProgress(){
+  if(confirm('ต้องการล้างประวัติคะแนนทั้งหมดใช่ไหม? ไม่สามารถกู้คืนได้')){
+    localStorage.removeItem('condScores');
+    renderProgress();
+  }
+}
+
+/* ============================================================
+   SUMMARY TABLE & SEARCH
+   ============================================================ */
+const SUMMARY_ROWS=[
+  {type:'zero',name:'Zero',struct:'If + Present Simple, Present Simple',use:'จริงเสมอ (fact, กฎ, นิสัย)',ex:'If you heat ice, it melts.'},
+  {type:'first',name:'First',struct:'If + Present Simple, will + V1',use:'เป็นไปได้ในอนาคต',ex:'If it rains, I will stay home.'},
+  {type:'second',name:'Second',struct:'If + Past Simple, would + V1',use:'ไม่จริง/จินตนาการ (ปัจจุบัน-อนาคต)',ex:'If I were you, I would tell the truth.'},
+  {type:'third',name:'Third',struct:'If + Past Perfect, would have + V3',use:'ไม่จริงในอดีต (เสียใจ)',ex:'If I had studied, I would have passed.'},
+  {type:'mixed',name:'Mixed (A)',struct:'If + Past Perfect, would + V1',use:'เงื่อนไขอดีต → ผลปัจจุบัน',ex:'If I had saved money, I would be rich now.'},
+  {type:'mixed',name:'Mixed (B)',struct:'If + Past Simple, would have + V3',use:'เงื่อนไขปัจจุบัน → ผลอดีต',ex:'If I were taller, I would have played basketball.'},
+  {type:'alt',name:'unless',struct:'Unless + clause (= if not)',use:'ถ้าไม่',ex:'Unless you hurry, you will miss the bus.'},
+  {type:'alt',name:'as long as',struct:'... as long as + clause',use:'ตราบใดที่',ex:'You can borrow my car as long as you drive carefully.'},
+  {type:'alt',name:'provided that',struct:'... provided that + clause',use:'โดยมีเงื่อนไขว่า',ex:'You may leave provided that you finish the report.'},
+  {type:'alt',name:'in case',struct:'... in case + clause',use:'เผื่อไว้ (เตรียมไว้ก่อน)',ex:'Take an umbrella in case it rains.'},
+  {type:'alt',name:'even if',struct:'Even if + clause',use:'แม้แต่ถ้า',ex:'Even if you apologize, I won\'t forgive you.'}
+];
+function renderSummaryTable(){
+  const tb=document.getElementById('summaryTable');
+  if(tb.children.length) return; // already rendered
+  tb.innerHTML=SUMMARY_ROWS.map(r=>`
+    <tr>
+      <td><span class="type-badge type-${r.type}">${r.name}</span></td>
+      <td><span class="en">${r.struct}</span></td>
+      <td><span class="th">${r.use}</span></td>
+      <td><span class="en">${r.ex}</span></td>
+    </tr>`).join('');
+}
+function resetSearch(){
+  document.getElementById('searchInput').value='';
+  document.getElementById('searchResults').innerHTML='';
+}
+function doSearch(){
+  const q=(document.getElementById('searchInput').value||'').trim().toLowerCase();
+  const res=document.getElementById('searchResults');
+  if(!q){ res.innerHTML=''; return; }
+  // search through lessons content + summary rows + examples
+  const hits=[];
+  LESSONS.forEach(l=>{
+    const txt=(l.title+' '+l.struct+' '+l.body).toLowerCase();
+    if(txt.includes(q)){
+      // find a snippet
+      const idx=txt.indexOf(q);
+      const snippet=l.body.replace(/<[^>]+>/g,'').substr(Math.max(0,idx-40),120);
+      hits.push({src:'บทเรียน: '+l.title,snippet,id:l.id});
+    }
+  });
+  SUMMARY_ROWS.forEach(r=>{
+    const txt=(r.name+' '+r.struct+' '+r.use+' '+r.ex).toLowerCase();
+    if(txt.includes(q)) hits.push({src:'Cheat Sheet: '+r.name,snippet:`${r.struct} — ${r.use} — ${r.ex}`});
+  });
+  if(!hits.length){
+    res.innerHTML=`<div class="no-result">ไม่พบผลลัพธ์สำหรับ "${q}" — ลองคำอื่น เช่น zero, would have, unless, mixed</div>`;
+    return;
+  }
+  res.innerHTML=hits.map(h=>`
+    <div class="search-hit" onclick="go('lessons');setTimeout(()=>openLesson('${h.id||'overview'}'),300)">
+      <div class="src">${h.src}</div>
+      <div>${highlightSearch(h.snippet,q)}</div>
+    </div>`).join('');
+}
+function highlightSearch(text,q){
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return text.replace(re,'<mark>$1</mark>');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderLessonIndex();
+renderMC();
+renderFill();
+renderReorder();
+setupTabs('exTabs');
+setupTabs('testTabs');
+renderProgress();
+renderSummaryTable();
+</script>
+</body>
+</html>
